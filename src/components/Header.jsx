@@ -19,7 +19,7 @@ const steps = [
 
 export default function Header({ currentStep = 1, onStepChange = () => {} }) {
   return (
-    <header className="bg-white shadow-sm p-4 sticky top-0 z-10">
+    <header className="bg-white dark:bg-gray-900 shadow-sm p-4 sticky top-0 z-10">
       <div className="flex items-center justify-between overflow-x-auto max-w-7xl mx-auto gap-4">
         {steps.map((step) => {
           const isActive = currentStep === step.id;

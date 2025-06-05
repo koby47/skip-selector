@@ -1,3 +1,9 @@
 @import "tailwindcss";
 
 
+@tailwindcss/preflight;
+@tailwind utilities;
+
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+
+

@@ -20,10 +20,10 @@ export default function SkipCard({ skip, isSelected, onSelect }) {
       onClick={() => onSelect(id)}
       className={clsx(
         'relative rounded-2xl p-4 shadow-md cursor-pointer transition-all duration-300',
-        isSelected ? 'border-blue-500 bg-blue-50' : 'hover:shadow-lg'
+        isSelected ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30' : 'hover:shadow-lg bg-white dark:bg-gray-800',
+        ''
       )}
     >
-      {/* Image with bottom-right "Not Allowed" badge */}
       <div className="relative mb-3">
         <img
           src={skipImage}
@@ -43,14 +43,13 @@ export default function SkipCard({ skip, isSelected, onSelect }) {
         )}
       </div>
 
-      {/* Info below image */}
       <div className="flex justify-between items-center mb-2">
-        <h3 className="text-xl font-semibold">{size}-yard Skip</h3>
+        <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{size}-yard Skip</h3>
         {isSelected && <CheckCircle className="text-blue-500 w-6 h-6" />}
       </div>
 
-      <p className="text-sm text-gray-600 mb-1">Hire period: {hire_period_days} days</p>
-      <p className="text-sm text-gray-900 font-bold">£{price_before_vat.toFixed(2)}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Hire period: {hire_period_days} days</p>
+      <p className="text-sm text-gray-900 dark:text-gray-100 font-bold">£{price_before_vat.toFixed(2)}</p>
     </div>
   );
 }
