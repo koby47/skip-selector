@@ -1,3 +1,4 @@
+// ThemeToggleFloating.jsx
 import { useEffect, useState } from 'react';
 import { Sun, Moon, Laptop } from 'lucide-react';
 import { applyThemeFromPreference, setTheme } from '../utils/theme';

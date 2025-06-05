@@ -1,6 +1,5 @@
 // src/utils/theme.js
 
-// Apply theme on load
 export function applyThemeFromPreference() {
   const theme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -12,16 +11,16 @@ export function applyThemeFromPreference() {
   }
 }
 
-// Set explicit theme
 export function setTheme(theme) {
   if (theme === 'system') {
     localStorage.removeItem('theme');
   } else {
     localStorage.setItem('theme', theme);
   }
-
   applyThemeFromPreference();
 }
+
+// Watch for OS theme changes when in system mode
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 mediaQuery.addEventListener('change', () => {
   if (!localStorage.getItem('theme')) {
