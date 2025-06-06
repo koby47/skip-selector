@@ -19,7 +19,7 @@ https://app.wewantwaste.co.uk/api/skips/by-location?postcode=NR32&area=Lowestoft
 ## ✨ Features
 
 - ✅ Responsive design (mobile and desktop)
-- ✅ Clean Figma-inspired layout
+- ✅ Clean  layout
 - ✅ Step-based progress bar (6 steps)
 - ✅ Floating theme toggle with persistent preference
 - ✅ Modern UI elements (cards, icons, transitions)
@@ -42,8 +42,9 @@ npm run dev
 src/
 ├── components/
 │   ├── pages/SkipSelectorPage.jsx
-│   ├── ui/ThemeToggleFloating.jsx
-│   └── shared/StepProgressBar.jsx
+│   ├── ThemeToggle.jsx
+│   └── Header.jsx
+    └── SkipCard.jsx
 ├── utils/theme.js
 ├── App.jsx
 └── main.jsx

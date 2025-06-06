@@ -17,18 +17,19 @@ export default function SkipCard({ skip, isSelected, onSelect }) {
 
   return (
     <div
-      onClick={() => onSelect(id)}
       className={clsx(
-        'relative rounded-2xl p-4 shadow-md cursor-pointer transition-all duration-300',
-        isSelected ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30' : 'hover:shadow-lg bg-white dark:bg-gray-800',
-        ''
+        'relative rounded-2xl p-4 shadow-md transition-all duration-300 transform',
+        'hover:shadow-xl hover:-translate-y-1 hover:scale-[1.015]',
+        isSelected
+          ? 'border-[var(--accent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]'
+          : 'bg-[var(--card)] text-[var(--text)]'
       )}
     >
       <div className="relative mb-3">
         <img
           src={skipImage}
           alt={`${size}-yard Skip`}
-          className="w-full h-40 object-cover rounded-lg"
+          className="w-full h-40 object-cover rounded-lg transition-opacity duration-300"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = '/images/skip-placeholder.jpg';
@@ -44,12 +45,27 @@ export default function SkipCard({ skip, isSelected, onSelect }) {
       </div>
 
       <div className="flex justify-between items-center mb-2">
-        <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{size}-yard Skip</h3>
-        {isSelected && <CheckCircle className="text-blue-500 w-6 h-6" />}
+        <h3 className="text-xl font-semibold text-[var(--text)]">{size}-yard Skip</h3>
+        {isSelected && <CheckCircle className="text-[var(--accent)] w-6 h-6 transition-transform duration-200 scale-110" />}
       </div>
 
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Hire period: {hire_period_days} days</p>
-      <p className="text-sm text-gray-900 dark:text-gray-100 font-bold">£{price_before_vat.toFixed(2)}</p>
+      <p className="text-sm text-[var(--text)] font-bold mb-3">
+        £{price_before_vat.toFixed(2)}
+      </p>
+
+      {/* Select Button */}
+      <button
+        onClick={() => onSelect(id)}
+        className={clsx(
+          'absolute bottom-4 right-4 px-3 py-1 text-sm rounded-full font-medium shadow transition-colors duration-200',
+          isSelected
+            ? 'bg-gray-600 text-white hover:bg-gray-700'
+            : 'bg-blue-600 text-white hover:bg-blue-700'
+        )}
+      >
+        {isSelected ? 'Selected' : 'Select'}
+      </button>
     </div>
   );
 }

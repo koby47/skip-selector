@@ -1,17 +1,16 @@
 import { useEffect } from 'react';
 import './App.css';
 import SkipSelectorPage from './components/pages/SkipSelectorPage';
-import ThemeToggleFloating from './components/ThemeToggleFloating';
-import { applyThemeFromPreference } from './utils/theme';
+import ThemeToggle from './components/pages/ThemeToggle';
+
+
 
 function App() {
-  useEffect(() => {
-    applyThemeFromPreference();
-  }, []);
+  
 
   return (
     <>
-      <ThemeToggleFloating />
+      <ThemeToggle/>
       <SkipSelectorPage />
     </>
   );

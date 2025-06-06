@@ -4,6 +4,16 @@
 @tailwindcss/preflight;
 @tailwind utilities;
 
-/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --card: #f8fafc;
+  --accent: #2563eb; /* blue-600 */
+}
 
-
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --card: #1e293b;
+  --accent: #3b82f6; /* slightly lighter blue */
+}

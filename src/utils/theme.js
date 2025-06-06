@@ -1,29 +1,17 @@
-// src/utils/theme.js
+// theme.js or inside a component
+export function setTheme(mode) {
+  const root = document.documentElement;
 
-export function applyThemeFromPreference() {
-  const theme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (theme === 'dark' || (!theme && prefersDark)) {
-    document.documentElement.classList.add('dark');
+  if (mode === 'system') {
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
   } else {
-    document.documentElement.classList.remove('dark');
+    root.setAttribute('data-theme', mode); // 'dark' or 'light'
   }
+
+  localStorage.setItem('theme', mode);
 }
 
-export function setTheme(theme) {
-  if (theme === 'system') {
-    localStorage.removeItem('theme');
-  } else {
-    localStorage.setItem('theme', theme);
-  }
-  applyThemeFromPreference();
+export function getSavedTheme() {
+  return localStorage.getItem('theme') || 'system';
 }
-
-// Watch for OS theme changes when in system mode
-const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-mediaQuery.addEventListener('change', () => {
-  if (!localStorage.getItem('theme')) {
-    applyThemeFromPreference();
-  }
-});

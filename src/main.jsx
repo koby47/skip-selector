@@ -1,14 +1,14 @@
 
-import { applyThemeFromPreference } from './utils/theme';
-applyThemeFromPreference();
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { setTheme, getSavedTheme } from './utils/theme.js'
 
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App.jsx';
-import './index.css';
+setTheme(getSavedTheme());
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>
-);
+  </React.StrictMode>,
+)
